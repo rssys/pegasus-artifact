@@ -1,0 +1,14 @@
+{
+    "num_threads": 1,
+    "cores": [1],
+    "enable_breakpoint": false,
+    "enable_code_inspection": true,
+    "log_code_inspection": false,
+    "enable_vtcp": false,
+    "enable_poll": true,
+    "hook_so": "/usr/local/share/pegasus/libhook.so",
+    "api": "/var/run/pegasus.sock",
+    "ioworker": {
+        "args": ["--conf=CONFIG_FSTACK"]
+    }
+}
