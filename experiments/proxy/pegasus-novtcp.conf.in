@@ -1,0 +1,17 @@
+{
+    "num_threads": 5,
+    "cores": [1,2,3,4,5],
+    "enable_breakpoint": true,
+    "enable_code_inspection": true,
+    "log_code_inspection": false,
+    "enable_vtcp": false,
+    "enable_poll": false,
+    "hook_so": "/usr/local/share/pegasus/libhook.so",
+    "api": "/var/run/pegasus.sock",
+    "cluster_mode": true,
+    "ioworker": {
+        "enable_linux_lo": true,
+        "args": ["--conf=CONFIG_FSTACK"]
+    }
+}
+

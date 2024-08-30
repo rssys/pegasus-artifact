@@ -1,0 +1,10 @@
+catnip:
+  my_ipv4_addr: "CONFIG_SERVER_IP"
+  my_link_addr: "CONFIG_SERVER_MAC"
+  my_interface_name: "enp129s0f0np0"
+  arp_table:
+    "CONFIG_SERVER_MAC": "CONFIG_SERVER_IP"
+    "CONFIG_CLIENT_MAC": "CONFIG_CLIENT_IP"
+dpdk:
+  eal_init: ["-c", "0xff", "-n", "4", "-a", "CONFIG_PCI","--proc-type=auto"]
+

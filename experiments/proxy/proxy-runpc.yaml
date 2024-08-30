@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: proxy
+  labels:
+    name: proxy
+spec:
+  terminationGracePeriodSeconds: 3
+  runtimeClassName: pegasus
+  restartPolicy: Never
+  volumes:
+  - name: keycert
+    secret:
+      secretName: nginx-certs-keys
+  containers:
+  - name: nginx
+    image: pdlan/pegasus-artifact-web-nginx
+    volumeMounts:
+    - name: keycert
+      readOnly: true
+      mountPath: /opt/ssl
+  - name: caddy
+    image: pdlan/pegasus-artifact-proxy-caddy-pegasus

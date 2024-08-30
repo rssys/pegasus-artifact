@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: tcp
+spec:
+  template:
+    spec:
+      terminationGracePeriodSeconds: 3
+      restartPolicy: Never
+      containers:
+      - name: server
+        image: pdlan/pegasus-artifact-microbenchmark-tcp
+        command: ["/server", "1"]
+      - name: client
+        image: pdlan/pegasus-artifact-microbenchmark-tcp
+        command: ["/client", "1"]

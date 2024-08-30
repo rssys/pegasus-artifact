@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: http
+spec:
+  template:
+    spec:
+      runtimeClassName: pegasus
+      terminationGracePeriodSeconds: 3
+      restartPolicy: Never
+      containers:
+      - name: server
+        image: pdlan/pegasus-artifact-openresty-hello
+      - name: client
+        image: pdlan/pegasus-artifact-microbenchmark-http-client
+        command: ["/client", "1"]

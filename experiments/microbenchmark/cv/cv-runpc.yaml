@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: cv
+spec:
+  template:
+    spec:
+      runtimeClassName: pegasus
+      terminationGracePeriodSeconds: 3
+      restartPolicy: Never
+      containers:
+      - name: cv
+        image: pdlan/pegasus-artifact-microbenchmark-cv
+        command: ["/cv", "1"]

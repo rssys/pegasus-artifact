@@ -1,0 +1,5 @@
+protected-mode no
+bind CONFIG_IP
+appendonly no
+save ""
+

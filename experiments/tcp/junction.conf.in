@@ -1,0 +1,8 @@
+host_addr CONFIG_IP
+host_netmask 255.255.255.0
+host_gateway 10.10.1.0
+runtime_kthreads 1
+runtime_spinning_kthreads 1
+runtime_guaranteed_kthreads 0
+runtime_priority lc
+runtime_quantum_us 0

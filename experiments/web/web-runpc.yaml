@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web
+  labels:
+    name: web
+spec:
+  terminationGracePeriodSeconds: 3
+  runtimeClassName: pegasus
+  restartPolicy: Never
+  volumes:
+  - name: keycert
+    secret:
+      secretName: nginx-certs-keys
+  containers:
+  - name: nginx
+    image: pdlan/pegasus-artifact-web-nginx
+    volumeMounts:
+    - name: keycert
+      readOnly: true
+      mountPath: /opt/ssl
+  - name: redis
+    image: redis:6.2.6
+    command:
+    - /usr/local/bin/redis-server
+    - "--save"
+    - ""
+    - "--appendonly"
+    - "no"
+  - name: web
+    image: pdlan/pegasus-artifact-web-node

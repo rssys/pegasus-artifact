@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: redis
+spec:
+  template:
+    spec:
+      terminationGracePeriodSeconds: 3
+      restartPolicy: Never
+      containers:
+      - name: server
+        image: redis:6.2.6
+        command:
+        - /usr/bin/taskset
+        - "-c"
+        - "0"
+        - /usr/local/bin/redis-server
+        - "--save"
+        - ""
+        - "--appendonly"
+        - "no"
+      - name: client
+        image: pdlan/pegasus-artifact-microbenchmark-redis
+        command: ["/client", "1"]

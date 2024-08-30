@@ -1,0 +1,7 @@
+{
+  "runtimes": {
+    "pegasus": {
+      "path": "/usr/local/bin/runpc"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: memcached
+spec:
+  template:
+    spec:
+      terminationGracePeriodSeconds: 3
+      restartPolicy: Never
+      containers:
+      - name: server
+        image: memcached:1.6.22
+        command:
+        - /usr/bin/taskset
+        - "-c"
+        - "0"
+        - /usr/local/bin/memcached
+        - "-t"
+        - "1"
+      - name: client
+        image: pdlan/pegasus-artifact-microbenchmark-memcached
+        command: ["/client", "1"]
